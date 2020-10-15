@@ -1,11 +1,15 @@
-import { fetchTodos } from '../services';
+import React, { useState, useEffect } from 'react';
+import { fetchTodos } from '../services/todos';
 
-export const useTodos = (filter = { state: 'ALL' }) => {
+export const useTodos = () => {
     const [todos, setTodos] = useState([]);
 
-    useEffect(async () => {
-        const response = await fetchTodos(filter);
-        setTodos(response);
+    useEffect(() => {
+        const act = async () => {
+            const response = await fetchTodos();
+            setTodos(response);
+        };
+        act();
     }, []);
 
     return todos;
