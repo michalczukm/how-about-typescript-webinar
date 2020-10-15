@@ -1,3 +1,5 @@
+import { Todo } from '../types';
+
 const TODOS = [
     {
         id: 1,
@@ -12,4 +14,4 @@ const TODOS = [
     },
 ];
 
-export const fetchTodos = () => Promise.resolve(TODOS);
+export const fetchTodos = async (): Promise<Todo[]> => Promise.resolve(TODOS);
