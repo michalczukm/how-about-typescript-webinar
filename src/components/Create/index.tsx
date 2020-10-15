@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 
 import styles from './Create.module.css';
 
-export const Create = ({ onSubmitted }) => {
-    const [content, setContent] = useState('');
+type Props = {
+    onSubmitted: (content: string) => void;
+};
 
-    const submit = (event) => {
+export const Create = ({ onSubmitted }: Props) => {
+    const [content, setContent] = useState<string>('');
+
+    const submit = (event: React.SyntheticEvent): void => {
         onSubmitted(content);
         setContent('');
         event.preventDefault();
     };
-    const handleInput = (event) => setContent(event.target.value);
+    const handleInput = (event: React.FormEvent<HTMLInputElement>) =>
+        setContent(event.currentTarget.value);
 
     return (
         <form className={styles.todoForm} onSubmit={submit}>
