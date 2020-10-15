@@ -1,9 +1,17 @@
-export const initialState = {
+import { Todo } from '../../types';
+import { Action } from './actions';
+
+export type State = {
+    showAll: boolean;
+    todos: Todo[];
+};
+
+export const initialState: State = {
     showAll: false,
     todos: [],
 };
 
-export const reducer = (state, action) => {
+export const reducer = (state: State, action: Action): State => {
     switch (action.type) {
         case 'ADD':
             return {
@@ -11,7 +19,7 @@ export const reducer = (state, action) => {
                 todos: [
                     ...state.todos,
                     {
-                        id: Math.max(state.todos.map(({ id }) => id)) + 1,
+                        id: Math.max(...state.todos.map(({ id }) => id)) + 1,
                         addedAt: new Date(),
                         content: action.payload,
                     },

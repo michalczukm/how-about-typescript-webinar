@@ -3,7 +3,7 @@ import partition from 'lodash.partition';
 import { reducer, initialState } from './reducer';
 import { deleteTodo, markTodoDone, markTodoNotDone, addTodo, toggleShowAll } from './actions';
 import { Create } from '../Create';
-import { List } from '../List'
+import { List } from '../List';
 
 export const Todos = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -26,7 +26,7 @@ export const Todos = () => {
     return (
         <>
             <Create onSubmitted={onTodoSubmitted} />
-            
+
             <List
                 key="todo"
                 todos={todoTasks}
@@ -39,7 +39,12 @@ export const Todos = () => {
                 <>
                     <hr />
                     <h2>Done</h2>
-                    <List key="done" todos={doneTasks} actions={todoItemActions} emptyState={<p>🛌 No tasks done yet</p>} />
+                    <List
+                        key="done"
+                        todos={doneTasks}
+                        actions={todoItemActions}
+                        emptyState={<p>🛌 No tasks done yet</p>}
+                    />
                 </>
             )}
         </>

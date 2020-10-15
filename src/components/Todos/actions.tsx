@@ -3,9 +3,10 @@ export const addTodo = (content) => ({
     payload: content,
 });
 
-export const toggleShowAll = () => ({
-    type: 'TOGGLE_SHOW_ALL',
-});
+export const toggleShowAll = () =>
+    ({
+        type: 'TOGGLE_SHOW_ALL',
+    } as const);
 
 export const deleteTodo = (id) => ({
     type: 'DELETE',
@@ -21,3 +22,8 @@ export const markTodoNotDone = (id) => ({
     type: 'MARK_NOT_DONE',
     payload: id,
 });
+
+export type Action =
+    | ReturnType<typeof toggleShowAll>
+    | ReturnType<typeof addTodo>
+    | ReturnType<typeof deleteTodo>;

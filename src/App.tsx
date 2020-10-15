@@ -1,7 +1,7 @@
 import React from 'react';
 import { Todos } from './components/Todos';
 
-const Header = () => (
+const Header: React.FunctionComponent<{}> = () => (
     <>
         <h1>🗒 Classic TODO list</h1>
     </>
