@@ -9,16 +9,18 @@ export const Todos = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const onToggleShowAll = () => dispatch(toggleShowAll());
-    const onTodoSubmitted = (content) => dispatch(addTodo(content));
+    const onTodoSubmitted = (content: string) => dispatch(addTodo(content));
 
     const [doneTasks, todoTasks] = state.showAll
         ? partition(state.todos, (todo) => !!todo.doneAt)
         : [[], state.todos.filter((todo) => !todo.doneAt)];
 
-    const withDispatch = (fun) => (...args) => dispatch(fun(...args));
+    const withDispatch = <T extends (...args: any) => any>(fun: T) => (
+        ...args: Parameters<T>
+    ): void => dispatch(fun(...args));
 
     const todoItemActions = {
-        deleteTodo: withDispatch(deleteTodo),
+        deleteTodo: withDispatch<typeof deleteTodo>(deleteTodo),
         markTodoDone: withDispatch(markTodoDone),
         markTodoNotDone: withDispatch(markTodoNotDone),
     };

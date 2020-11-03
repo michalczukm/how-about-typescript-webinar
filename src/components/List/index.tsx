@@ -3,15 +3,15 @@ import { Todo } from '../../types';
 import { Item } from '../Item';
 
 type Actions = {
-    deleteTodo: (id: string) => void,
-    markTodoDone: (id: string) => void,
-    markTodoNotDone: (id: string) => void
-}
+    deleteTodo: (id: number) => void;
+    markTodoDone: (id: number) => void;
+    markTodoNotDone: (id: number) => void;
+};
 
 type Props = {
-    todos: Todo[],
-    actions: Actions,
-    emptyState: React.ReactElement<{ foo: string}>
+    todos: Todo[];
+    actions: Actions;
+    emptyState: React.ReactElement<{ foo: string }>;
 };
 
 export const List: React.FC<Props> = ({ todos, actions, emptyState = null }) => {

@@ -19,7 +19,10 @@ export const reducer = (state: State, action: Action): State => {
                 todos: [
                     ...state.todos,
                     {
-                        id: Math.max(...state.todos.map(({ id }) => id)) + 1,
+                        id:
+                            state.todos.length > 0
+                                ? Math.max(...state.todos.map(({ id }) => id)) + 1
+                                : 0,
                         addedAt: new Date(),
                         content: action.payload,
                     },
