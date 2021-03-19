@@ -11,6 +11,10 @@
 
 > Source code for webinar hosted by infoShare Academy at 15.10.2020
 
+## Video
+
+[Link to webinar recording](https://www.facebook.com/watch/live/?v=286807402299432&ref=watch_permalink)
+
 ## Install
 
 ```sh
